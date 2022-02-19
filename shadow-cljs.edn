@@ -1,0 +1,15 @@
+;; shadow-cljs configuration
+{:source-paths ["src"]
+ :dependencies [[cider/cider-nrepl "0.28.2"]
+                [metosin/malli "0.8.1"]
+                [medley "1.3.0"]]
+ :builds {:app {:target :node-script
+                :output-to "target/main.js"
+                :main server.startup/main!
+                :devtools {:before-load-async server.startup/stop!
+                           :after-load server.startup/start!}}
+
+          :test {:target    :node-test
+                 :output-to "out/node-tests.js"
+                 :ns-regexp "-test$"
+                 :autorun   true}}}

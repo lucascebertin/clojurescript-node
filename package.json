@@ -1,0 +1,18 @@
+{
+  "name": "clojurescript-node",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "watch": "shadow-cljs watch app",
+    "start": "node target/main"
+  },
+  "devDependencies": {
+    "shadow-cljs": "2.17.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "swagger-ui-express": "^4.3.0"
+  }
+}
