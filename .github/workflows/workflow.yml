@@ -25,6 +25,9 @@ jobs:
         distribution: 'zulu'
         java-version: '12'
 
+    - name: restore npm packages
+      run: npm ci 
+
     - name: run build
       run: npx shadow-cljs compile app
  
