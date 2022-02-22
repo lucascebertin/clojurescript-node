@@ -1,4 +1,4 @@
-(ns test.server.infra.router-test
+(ns test.unit.server.infra.router-test
   (:require [server.infra.http :as http]
             [server.infra.router :as router]
             [cljs.test :refer [deftest testing is]]))

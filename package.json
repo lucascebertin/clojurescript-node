@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "watch": "shadow-cljs watch app",
-    "start": "node target/main"
+    "start": "node target/main",
+    "test:unit:watch": "shadow-cljs watch test-unit",
+    "test:unit": "node out/unit/node-tests.js",
+    "test:integration:watch": "shadow-cljs watch test-unit",
+    "test:integration": "node out/integration/node-tests.js"
   },
   "devDependencies": {
     "shadow-cljs": "2.17.0"

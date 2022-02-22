@@ -8,8 +8,8 @@
 (defn bad-request [res erro]
   (-> res (.status 400) (.send (clj->js erro))))
 
-(defn ok 
+(defn ok
   ([res] (ok res {}))
-  ([res dados] (-> res 
-                   (.status 200) 
+  ([res dados] (-> res
+                   (.status 200)
                    (.send (clj->js dados)))))

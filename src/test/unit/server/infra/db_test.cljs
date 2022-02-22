@@ -1,4 +1,4 @@
-(ns test.server.infra.db-test
+(ns test.unit.server.infra.db-test
   (:require [cljs.test :refer [deftest testing is]]
             [server.infra.db :as db]))
 

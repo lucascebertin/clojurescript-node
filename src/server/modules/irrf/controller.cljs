@@ -17,8 +17,3 @@
     (http/bad-request res erro)
     (next)))
 
-(defn somar-pares [numeros]
-  (->> numeros
-       (filter even?)
-       (reduce +)))
-

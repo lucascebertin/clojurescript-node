@@ -1,6 +1,6 @@
-(ns test.server.infra.http-test
+(ns test.unit.server.infra.http-test
   (:require [cljs.test :refer [deftest testing is]]
-            [test.server.mock.express :as express]
+            [test.unit.server.mock.express :as express]
             [server.infra.http :as http]))
 
 (deftest ok

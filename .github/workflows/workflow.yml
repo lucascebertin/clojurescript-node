@@ -1,0 +1,33 @@
+name: Tests
+on: [push]
+
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Set Node.js 12.x
+      uses: actions/setup-node@master
+      with:
+        version: 12.x
+
+    - name: Setup java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'zulu'
+        java-version: '12'
+
+    - name: run build
+      run: npx shadow-cljs compile app
+ 
+
+    - name: run unit tests
+      run: npx shadow-cljs release test-unit
