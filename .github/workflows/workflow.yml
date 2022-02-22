@@ -26,13 +26,20 @@ jobs:
         java-version: '12'
 
     - name: restore npm packages
-      run: npm ci 
+      run: |
+        npm ci
 
     - name: run build
-      run: npx shadow-cljs compile app
+      run: |
+        npx shadow-cljs compile app
  
     - name: run unit tests
-      run: npx shadow-cljs release test-unit
+      run: |
+        npx shadow-cljs release ci-test-unit
+        node out/ci/unit/node-tests.js
 
     - name: run integration tests
-      run: npx shadow-cljs release test-integration
+      run: |
+        npx shadow-cljs release ci-test-integration
+        node out/ci/integration/node-tests.js
+

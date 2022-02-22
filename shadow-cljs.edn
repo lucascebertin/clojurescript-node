@@ -8,11 +8,23 @@
                 :main server.startup/main!
                 :devtools {:before-load-async server.startup/stop!
                            :after-load server.startup/start!}}
+
           :test-unit {:target    :node-test
                       :output-to "out/unit/node-tests.js"
                       :ns-regexp "test.unit.*-test$"
                       :autorun   true}
+
           :test-integration {:target    :node-test
                              :output-to "out/integration/node-tests.js"
                              :ns-regexp "test.integration.*-test$"
-                             :autorun   true}}}
+                             :autorun   true}
+
+          :ci-test-unit {:target    :node-test
+                      :output-to "out/ci/unit/node-tests.js"
+                      :ns-regexp "test.unit.*-test$"
+                      :autorun   false}
+
+          :ci-test-integration {:target    :node-test
+                                :output-to "out/ci/integration/node-tests.js"
+                                :ns-regexp "test.integration.*-test$"
+                                :autorun   false}}}
