@@ -19,6 +19,5 @@
   (-> (express)
       add-middlewares
       (router/registrar-rotas irrf.routes/rota)
-      (router/registrar-rotas hw.routes/rota)
-      (.listen 3000 #(println "Example app listening on port 3000!"))))
+      (router/registrar-rotas hw.routes/rota)))
 

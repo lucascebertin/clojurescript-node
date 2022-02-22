@@ -6,7 +6,9 @@
 (defonce server (atom nil))
 
 (defn start! []
-  (reset! server (app/start-server))
+  (reset! server
+          (-> (app/start-server)
+              (.listen 3000 #(println "Example app listening on port 3000!"))))
   (.log js/console (. ^js @server -router)))
 
 (defn express-stop-callback [done err]

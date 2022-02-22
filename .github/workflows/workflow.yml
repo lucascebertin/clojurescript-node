@@ -28,6 +28,8 @@ jobs:
     - name: run build
       run: npx shadow-cljs compile app
  
-
     - name: run unit tests
       run: npx shadow-cljs release test-unit
+
+    - name: run integration tests
+      run: npx shadow-cljs release test-integration

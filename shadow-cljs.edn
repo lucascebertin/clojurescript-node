@@ -15,4 +15,4 @@
           :test-integration {:target    :node-test
                              :output-to "out/integration/node-tests.js"
                              :ns-regexp "test.integration.*-test$"
-                             :autorun   false}}}
+                             :autorun   true}}}
