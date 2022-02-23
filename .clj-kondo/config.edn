@@ -1,0 +1,4 @@
+{:config-paths ["funcool/promesa"
+                "metosin/malli"
+                "metosin/malli-types"
+                "promesa"]}

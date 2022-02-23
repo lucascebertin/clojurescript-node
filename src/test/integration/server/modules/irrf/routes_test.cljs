@@ -1,8 +1,7 @@
 (ns test.integration.server.modules.irrf.routes-test
-  (:require [cljs.test :refer [deftest testing is]]
+  (:require [cljs.test :refer [deftest testing is async]]
             [server.app :as app]
-            [cljs.core.async :refer [go]]
-            [cljs.core.async.interop :refer-macros [<p!]]
+            [promesa.core :as p]
             ["supertest" :as supertest]))
 
 (def app (app/start-server))
@@ -17,13 +16,16 @@
 (deftest routes
   (testing "calcular irrf"
     (testing "quando salário for R$1000.00, deve ser isento, retornando valor igual a zero"
-      (go (let [response (<p! (post "/v1/irrf" {:salario 1000.00
-                                                :dependentes 0}))]
-            (is (= 200
-                   (-> response .-status)))
+      (async done
+             (p/let [response (post "/v1/irrf" {:salario 1000.00
+                                                :dependentes 0})]
+               (is (= 200
+                      (-> response .-status)))
 
-            (is (= {:valor 0}
-                   (-> response
-                       .-body
-                       (js->clj :keywordize-keys true)))))))))
+               (is (= {:valor 0}
+                      (-> response
+                          .-body
+                          (js->clj :keywordize-keys true))))
+
+               (done))))))
 
