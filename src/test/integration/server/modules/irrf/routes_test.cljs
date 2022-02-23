@@ -29,3 +29,18 @@
 
                (done))))))
 
+(deftest routes-fail
+  (testing "calcular irrf - falhar"
+    (testing "quando salário for R$1000.00, deve ser isento, retornando valor igual a zero"
+      (async done
+             (p/let [response (post "/v1/irrf" {:salario 1000.00
+                                                :dependentes 0})]
+               (is (= 400
+                      (-> response .-status)))
+
+               (is (= {:valor 0}
+                      (-> response
+                          .-body
+                          (js->clj :keywordize-keys true))))
+
+               (done))))))
